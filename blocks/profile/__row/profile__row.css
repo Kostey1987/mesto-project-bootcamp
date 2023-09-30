@@ -1,0 +1,14 @@
+.profile__row {
+ display: flex;
+ justify-content: space-between;
+ max-width: 336px;
+ width: 100%;
+ margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__row {
+      max-width: 282px;
+      margin-top: 5px;
+      }
+  }

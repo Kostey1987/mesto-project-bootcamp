@@ -1,0 +1,71 @@
+.popup__input {
+  display: flex;
+  align-items: start;
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  max-width: 358px;
+  height: 35px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  margin: 0 auto 0 auto;
+  color: black;
+  font-size: 14px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0;
+}
+
+.popup__input:last-of-type {
+  margin: 22px auto 0 auto;
+}
+
+.popup__input:focus {
+  outline: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.popup__input::-webkit-input-placeholder {
+  color: black;
+  font-size: 14px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.popup__input::-moz-placeholder  {
+  color: black;
+  font-size: 14px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.popup__input::-ms-input-placeholder  {
+  color: black;
+  font-size: 14px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.popup__input::placeholder  {
+  color: black;
+  font-size: 14px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__input {
+    max-width: 238px;
+    }
+} 

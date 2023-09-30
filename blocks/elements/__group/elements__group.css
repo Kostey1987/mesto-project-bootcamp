@@ -1,0 +1,15 @@
+.elements__group {
+  background-image: url("../../../images/group/disable.svg");
+  background-size: cover;
+  background-position: center;
+  width: 22px;
+  height: 19px;
+  margin: 5px 5px auto 1px;
+  background-color: #fff;
+  border: 0px;
+}
+
+.elements__group:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
