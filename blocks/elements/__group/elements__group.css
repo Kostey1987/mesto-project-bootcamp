@@ -4,9 +4,10 @@
   background-position: center;
   width: 22px;
   height: 19px;
-  margin: 5px 5px auto 1px;
-  background-color: #fff;
+  margin: 30px 23px 30px auto;
+  background-color: transparent;
   border: 0px;
+  padding: 0;
 }
 
 .elements__group:hover {

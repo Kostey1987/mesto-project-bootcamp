@@ -1,6 +1,5 @@
 .elements__container {
   display: flex;
-  margin: 25px 15px 31px 21px;
   align-items: center;
   justify-content: space-between;
 }

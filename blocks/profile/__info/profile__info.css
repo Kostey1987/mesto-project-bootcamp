@@ -4,7 +4,6 @@
   align-items: start;
   max-width: 336px;
   width: 100%;
-  min-height: 73px;
   margin: auto auto auto 26px;
 }
 
@@ -13,5 +12,5 @@
     max-width: 282px;
     align-items: center;
     margin: 22.25px auto 0 auto;
-    }
+  }
 }

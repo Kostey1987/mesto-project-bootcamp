@@ -1,6 +1,6 @@
 .logo {
   display: block;
-  background-image: url(../../images/logo.svg);
+  background-image: url("../../images/logo.svg");
   max-width: 145px;
   width: 100%;
   height: 33px;
@@ -11,8 +11,8 @@
 
 @media screen and (max-width: 768px) {
   .logo {
-      max-width: 110px;
-      height: 24.5px;
-      margin: 28px auto 31.6px 27px;
-    }
+    max-width: 110px;
+    height: 24.5px;
+    margin: 28px auto 31.6px 27px;
+  }
 }

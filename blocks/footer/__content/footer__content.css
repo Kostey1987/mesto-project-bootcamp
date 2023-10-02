@@ -7,9 +7,9 @@
   margin: 0;
 }
 
-  @media screen and (max-width: 768px) {
-    .footer__content {
+@media screen and (max-width: 768px) {
+  .footer__content {
       margin-top: 48px;
       font-size: 14px;
-      }
+  }
 }  
