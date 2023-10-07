@@ -26,48 +26,54 @@
       </section>
 
       <section class="elements" aria-label="Галерея">
-        <div class="elements__element">
-          <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="elements__image" />
+        <!-- <div class="elements__element">
+          <button class="elements__trash" type="button"></button>
+          <img src="./images/arkhyz.jpg" alt="Архыз" class="elements__image" />
           <div class="elements__container">
-            <h2 class="elements__paragraph">Карачаевск</h2>
+            <h2 class="elements__paragraph">Архыз</h2>
             <button class="elements__group" type="button"></button>
           </div>
-        </div>
-        <div class="elements__element">
-          <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="elements__image" />
+        </div> -->
+        <!-- <div class="elements__element">
+          <button class="elements__trash" type="button"></button>
+          <img src="./images/chelyabinsk-oblast.jpg" alt="Челябинская область" class="elements__image" />
           <div class="elements__container">
-            <h2 class="elements__paragraph">Гора Эльбрус</h2>
+            <h2 class="elements__paragraph">Челябинская область</h2>
             <button class="elements__group elements__group_active" type="button"></button>
           </div>
         </div>
         <div class="elements__element">
-          <img src="./images/Dombai.jpg" alt="Домбай" class="elements__image" />
+          <button class="elements__trash" type="button"></button>
+          <img src="./images/ivanovo.jpg" alt="Иваново" class="elements__image" />
           <div class="elements__container">
-            <h2 class="elements__paragraph">Домбай</h2>
+            <h2 class="elements__paragraph">Иваново</h2>
             <button class="elements__group" type="button"></button>
           </div>
         </div>
         <div class="elements__element">
-          <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="elements__image" />
+          <button class="elements__trash" type="button"></button>
+          <img src="./images/baikal.jpg" alt="Байкал" class="elements__image" />
           <div class="elements__container">
-            <h2 class="elements__paragraph">Гора Эльбрус</h2>
+            <h2 class="elements__paragraph">Байкал</h2>
             <button class="elements__group" type="button"></button>
           </div>
         </div>
         <div class="elements__element">
-          <img src="./images/Dombai.jpg" alt="Домбай" class="elements__image" />
+          <button class="elements__trash" type="button"></button>
+          <img src="./images/kamchatka.jpg" alt="Камчатка" class="elements__image" />
           <div class="elements__container">
-            <h2 class="elements__paragraph">Домбай</h2>
+            <h2 class="elements__paragraph">Камчатка</h2>
             <button class="elements__group" type="button"></button>
           </div>
         </div>
         <div class="elements__element">
-          <img src="./images/Karachaevsk.jpg" alt="Карачаево-Чер" class="elements__image" />
+          <button class="elements__trash" type="button"></button>
+          <img src="./images/kholmogorsky-rayon.jpg" alt="Холмогоры" class="elements__image" />
           <div class="elements__container">
-            <h2 class="elements__paragraph">Карачаево-Черкесия</h2>
+            <h2 class="elements__paragraph">Холмогоры</h2>
             <button class="elements__group" type="button"></button>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
 
@@ -76,7 +82,7 @@
     </footer>
 
     <div class="popup">
-      <div class="popup__container">
+      <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="popup__form" name="форма" method="post">
@@ -88,5 +94,39 @@
         </form>
       </div>
     </div>
+
+    <div class="popup">
+      <div class="popup__container popup__container_place_form">
+        <button class="popup__close-button" type="button"></button>
+        <h2 class="popup__heading">Новое место</h2>
+        <form class="popup__form" name="форма" method="post">
+          <fieldset class="popup__input-container">
+            <input class="popup__input" type="text" placeholder="Название" required />
+            <input class="popup__input" type="text" placeholder="Ссылка на картинку" required />
+          </fieldset>
+          <button class="popup__submit" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_opacity">
+      <div class="popup__container popup__container_place_image">
+        <button class="popup__close-button" type="button"></button>
+        <img src="./images/ivanovo.jpg" alt="домбай" class="popup__image">
+        <p class="popup__paragraph">Домбай</p>
+      </div>
+    </div>
+    <template id="create-item">
+      <div class="elements__element">
+        <button class="elements__trash" type="button"></button>
+        <img src="./images/arkhyz.jpg" alt="Архыз" class="elements__image" />
+        <div class="elements__container">
+          <h2 class="elements__paragraph">Архыз</h2>
+          <button class="elements__group" type="button"></button>
+        </div>
+      </div>
+    </template>    
+
+    <script src="../mesto-project-bootcamp/script.js"></script>
   </body>
 </html>

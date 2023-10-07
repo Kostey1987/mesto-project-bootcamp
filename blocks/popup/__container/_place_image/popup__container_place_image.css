@@ -1,0 +1,6 @@
+.popup__container_place_image {
+  max-width: 75vh;
+  max-height: 75vh; 
+  background: transparent;
+  border-radius: 0;
+}
