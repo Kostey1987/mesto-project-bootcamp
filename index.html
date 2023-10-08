@@ -18,62 +18,14 @@
         <div class="profile__info">
           <div class="profile__row">
             <h2 class="profile__name">Жак-Ив Кусто</h2>
-            <button class="profile__edit-button" type="submit"></button>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__about">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="submit"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
 
       <section class="elements" aria-label="Галерея">
-        <!-- <div class="elements__element">
-          <button class="elements__trash" type="button"></button>
-          <img src="./images/arkhyz.jpg" alt="Архыз" class="elements__image" />
-          <div class="elements__container">
-            <h2 class="elements__paragraph">Архыз</h2>
-            <button class="elements__group" type="button"></button>
-          </div>
-        </div> -->
-        <!-- <div class="elements__element">
-          <button class="elements__trash" type="button"></button>
-          <img src="./images/chelyabinsk-oblast.jpg" alt="Челябинская область" class="elements__image" />
-          <div class="elements__container">
-            <h2 class="elements__paragraph">Челябинская область</h2>
-            <button class="elements__group elements__group_active" type="button"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <button class="elements__trash" type="button"></button>
-          <img src="./images/ivanovo.jpg" alt="Иваново" class="elements__image" />
-          <div class="elements__container">
-            <h2 class="elements__paragraph">Иваново</h2>
-            <button class="elements__group" type="button"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <button class="elements__trash" type="button"></button>
-          <img src="./images/baikal.jpg" alt="Байкал" class="elements__image" />
-          <div class="elements__container">
-            <h2 class="elements__paragraph">Байкал</h2>
-            <button class="elements__group" type="button"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <button class="elements__trash" type="button"></button>
-          <img src="./images/kamchatka.jpg" alt="Камчатка" class="elements__image" />
-          <div class="elements__container">
-            <h2 class="elements__paragraph">Камчатка</h2>
-            <button class="elements__group" type="button"></button>
-          </div>
-        </div>
-        <div class="elements__element">
-          <button class="elements__trash" type="button"></button>
-          <img src="./images/kholmogorsky-rayon.jpg" alt="Холмогоры" class="elements__image" />
-          <div class="elements__container">
-            <h2 class="elements__paragraph">Холмогоры</h2>
-            <button class="elements__group" type="button"></button>
-          </div>
-        </div> -->
       </section>
     </main>
 
@@ -81,45 +33,46 @@
       <p class="footer__content">© 2023 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup-profile">
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="popup__form" name="форма" method="post">
+        <form class="popup__form popup__form_profile" name="форма" method="post">
           <fieldset class="popup__input-container">
-            <input class="popup__input" type="text" placeholder="Жак-Ив Кусто" required />
-            <input class="popup__input" type="text" placeholder="Исследователь океана" required />
+            <input class="popup__input popup__input_name" type="text" placeholder="Жак-Ив Кусто" required />
+            <input class="popup__input popup__input_job-title" type="text" placeholder="Исследователь океана"/>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup">
+    <div class="popup popup-card">
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="popup__form" name="форма" method="post">
+        <form class="popup__form popup__form_card" name="форма" method="post">
           <fieldset class="popup__input-container">
-            <input class="popup__input" type="text" placeholder="Название" required />
-            <input class="popup__input" type="text" placeholder="Ссылка на картинку" required />
+            <input class="popup__input popup__input_place" type="text" placeholder="Название" required />
+            <input class="popup__input popup__input_image" type="text" placeholder="Ссылка на картинку" required />
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup popup_opacity">
+    <div class="popup popup-image popup_opacity">
       <div class="popup__container popup__container_place_image">
         <button class="popup__close-button" type="button"></button>
-        <img src="./images/ivanovo.jpg" alt="домбай" class="popup__image">
-        <p class="popup__paragraph">Домбай</p>
+        <img src="" alt="" class="popup__image">
+        <p class="popup__paragraph"></p>
       </div>
     </div>
+
     <template id="create-item">
       <div class="elements__element">
         <button class="elements__trash" type="button"></button>
-        <img src="./images/arkhyz.jpg" alt="Архыз" class="elements__image" />
+        <img src="./images/arkhyz.jpg" alt="Архыз" class="elements__image"/>
         <div class="elements__container">
           <h2 class="elements__paragraph">Архыз</h2>
           <button class="elements__group" type="button"></button>
