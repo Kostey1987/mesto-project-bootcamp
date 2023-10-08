@@ -1,6 +1,13 @@
 .popup__container_place_image {
   max-width: 75vh;
-  max-height: 75vh; 
+  max-height: 75vh;
   background: transparent;
   border-radius: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .popup__container_place_image {
+    max-width: 60vh;
+    max-height: 60vh;
+  }
 }
