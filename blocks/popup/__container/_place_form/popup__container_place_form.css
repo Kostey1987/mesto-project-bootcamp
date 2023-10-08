@@ -10,3 +10,10 @@
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
 }
+
+@media screen and (max-width: 768px) {
+    .popup__container_place_form {
+        max-width: 282px;
+        min-height: 322px;
+    }
+}
