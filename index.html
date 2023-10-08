@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
   </head>
 
@@ -14,7 +14,7 @@
 
     <main class="content">
       <section class="profile" aria-label="Профиль">
-        <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar" />
+        <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__row">
             <h2 class="profile__name">Жак-Ив Кусто</h2>
@@ -37,10 +37,10 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="popup__form popup__form_profile" name="форма" method="post">
+        <form class="popup__form popup__form_profile" name="infoForm" method="post">
           <fieldset class="popup__input-container">
-            <input class="popup__input popup__input_name" type="text" placeholder="Жак-Ив Кусто" required />
-            <input class="popup__input popup__input_job-title" type="text" placeholder="Исследователь океана"/>
+            <input class="popup__input popup__input_name" type="text" placeholder="Жак-Ив Кусто" required>
+            <input class="popup__input popup__input_job-title" type="text" placeholder="Исследователь океана">
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -51,10 +51,10 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="popup__form popup__form_card" name="форма" method="post">
+        <form class="popup__form popup__form_card" name="cardForm" method="post">
           <fieldset class="popup__input-container">
-            <input class="popup__input popup__input_place" type="text" placeholder="Название" required />
-            <input class="popup__input popup__input_image" type="text" placeholder="Ссылка на картинку" required />
+            <input class="popup__input popup__input_place" type="text" placeholder="Название" required>
+            <input class="popup__input popup__input_image" type="text" placeholder="Ссылка на картинку" required>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -64,7 +64,7 @@
     <div class="popup popup-image popup_opacity">
       <div class="popup__container popup__container_place_image">
         <button class="popup__close-button" type="button"></button>
-        <img src="" alt="" class="popup__image">
+        <img src="#" alt="Thumbnail" class="popup__image">
         <p class="popup__paragraph"></p>
       </div>
     </div>
@@ -72,7 +72,7 @@
     <template id="create-item">
       <div class="elements__element">
         <button class="elements__trash" type="button"></button>
-        <img src="" alt="" class="elements__image"/>
+        <img src="" alt="" class="elements__image">
         <div class="elements__container">
           <h2 class="elements__paragraph"></h2>
           <button class="elements__group" type="button"></button>
