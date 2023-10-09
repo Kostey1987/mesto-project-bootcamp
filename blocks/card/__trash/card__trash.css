@@ -1,4 +1,4 @@
-.elements__trash {
+.card__trash {
   background-image: url("../../../images/Trash.svg");
   background-size: cover;
   background-position: center;
@@ -14,7 +14,7 @@
   background-color: transparent;
 }
 
-.elements__trash:hover {
+.card__trash:hover {
   opacity: 0.6;
-  cursor: pointer; 
+  cursor: pointer;
 }

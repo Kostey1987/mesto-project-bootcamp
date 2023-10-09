@@ -29,7 +29,7 @@
 }
 
 .popup__input::-webkit-input-placeholder {
-  color: black;
+  color: #C4C4C4;
   font-size: 14px;
   font-family: inherit;
   font-style: normal;
@@ -38,7 +38,7 @@
 }
 
 .popup__input::-moz-placeholder  {
-  color: black;
+  color: #C4C4C4;
   font-size: 14px;
   font-family: inherit;
   font-style: normal;
@@ -47,7 +47,7 @@
 }
 
 .popup__input::-ms-input-placeholder  {
-  color: black;
+  color: #C4C4C4;
   font-size: 14px;
   font-family: inherit;
   font-style: normal;
@@ -56,7 +56,7 @@
 }
 
 .popup__input::placeholder  {
-  color: black;
+  color: #C4C4C4;
   font-size: 14px;
   font-family: inherit;
   font-style: normal;

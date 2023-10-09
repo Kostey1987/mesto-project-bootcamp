@@ -1,4 +1,4 @@
-.elements__group {
+.card__like {
   background-image: url("../../../images/group/disable.svg");
   background-size: cover;
   background-position: center;
@@ -10,7 +10,7 @@
   padding: 0;
 }
 
-.elements__group:hover {
+.card__like:hover {
   opacity: 0.5;
   cursor: pointer;
 }

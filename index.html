@@ -25,7 +25,7 @@
         <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section class="elements" aria-label="Галерея">
+      <section class="cards" aria-label="Галерея">
       </section>
     </main>
 
@@ -39,8 +39,8 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="popup__form popup__form_profile" name="infoForm" method="post">
           <fieldset class="popup__input-container">
-            <input class="popup__input popup__input_name" type="text" placeholder="Жак-Ив Кусто" required>
-            <input class="popup__input popup__input_job-title" type="text" placeholder="Исследователь океана">
+            <input class="popup__input popup__input_name" type="text" name="nameOf" placeholder="Имя" required>
+            <input class="popup__input popup__input_job-title" type="text" name="job" placeholder="Занятие" required>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -53,8 +53,8 @@
         <h2 class="popup__heading">Новое место</h2>
         <form class="popup__form popup__form_card" name="cardForm" method="post">
           <fieldset class="popup__input-container">
-            <input class="popup__input popup__input_place" type="text" placeholder="Название" required>
-            <input class="popup__input popup__input_image" type="text" placeholder="Ссылка на картинку" required>
+            <input class="popup__input popup__input_place" type="text" name="cardPlace" placeholder="Название" required>
+            <input class="popup__input popup__input_image" type="text" name="cardImage" placeholder="Ссылка на картинку" required>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -70,16 +70,16 @@
     </div>
 
     <template id="create-item">
-      <div class="elements__element">
-        <button class="elements__trash" type="button"></button>
-        <img src="" alt="" class="elements__image">
-        <div class="elements__container">
-          <h2 class="elements__paragraph"></h2>
-          <button class="elements__group" type="button"></button>
+      <div class="card">
+        <button class="card__trash" type="button"></button>
+        <img src="" alt="" class="card__image">
+        <div class="card__container">
+          <h2 class="card__paragraph"></h2>
+          <button class="card__like" type="button"></button>
         </div>
       </div>
     </template>    
 
-    <script src="../mesto-project-bootcamp/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
