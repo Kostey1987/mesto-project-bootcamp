@@ -37,10 +37,12 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="popup__form popup__form_profile" name="infoForm" method="post">
+        <form id="form" class="popup__form popup__form_profile" name="infoForm" method="post" novalidate>
           <fieldset class="popup__input-container">
-            <input class="popup__input popup__input_name" type="text" name="nameOf" placeholder="Имя" required>
-            <input class="popup__input popup__input_job-title" type="text" name="job" placeholder="Занятие" required>
+            <input id="nameOf" class="popup__input popup__input_name" type="text" name="nameOf" placeholder="Имя" required minlength="4" maxlength="40">
+            <span id="error-nameOf" class="popup__error"></span>
+            <input id="job" class="popup__input popup__input_job-title" type="text" name="job" placeholder="Занятие" required minlength="2" maxlength="200">
+            <span id="error-job" class="popup__error"></span>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -51,10 +53,13 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="popup__form popup__form_card" name="cardForm" method="post">
+        <form class="popup__form popup__form_card" name="cardForm" method="post" novalidate>
           <fieldset class="popup__input-container">
-            <input class="popup__input popup__input_place" type="text" name="cardPlace" placeholder="Название" required>
-            <input class="popup__input popup__input_image" type="text" name="cardImage" placeholder="Ссылка на картинку" required>
+            <input id="cardPlace" class="popup__input popup__input_place" type="text" name="cardPlace" placeholder="Название" required minlength="2" maxlength="30">
+            <span id="error-cardPlace" class="popup__error"></span>
+            <input id="cardImage" class="popup__input popup__input_image" type="url" name="cardImage"
+            placeholder="Ссылка на картинку" required>
+            <span  id="error-cardImage" class="popup__error"></span>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>

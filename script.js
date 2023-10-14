@@ -27,6 +27,7 @@ const initialCards = [
   
   const cardSection = document.querySelector(".cards");
   const popupImage = document.querySelector(".popup-image");
+  const popups = document.querySelectorAll(".popup");
   const popupCloseButtons = document.querySelectorAll(".popup__close-button");
   const popupFullImage = document.querySelector(".popup-image");
   const cardInfo = document.querySelector(".profile__add-button");
@@ -40,8 +41,36 @@ const initialCards = [
   const profileName = document.querySelector(".profile__name");
   const profileAbout = document.querySelector(".profile__about");
   const formInputPlace = document.querySelector(".popup__input_place");
-  const formInputImage = document.querySelector(".popup__input_image");
-  
+  const formInputImage = document.querySelector('.popup__input_image');
+  const submitButton = document.querySelector('.popup__submit');
+  const inputFields = document.querySelectorAll('.popup__input');//валидация
+
+  //функция закрытия по клавише
+  document.addEventListener('keydown', evt => {
+    const popupOpened = document.querySelector('.popup_opened');
+    if (popupOpened !== null && evt.key == 'Escape') {
+      closePopup(popupOpened);
+    }
+  });
+
+
+
+  // убер закрывалка
+  // document.querySelectorAll('.popup__container').forEach(e => {
+  //   e.addEventListener('click', e => {
+  //     e.stopPropagation();
+  //   })
+  // })
+  // popups.forEach(e => {
+  //   console.log(e)
+  //   e.addEventListener('click', ee => {      
+  //     const popupOpened = document.querySelector('.popup_opened');
+  //     if (popupOpened !== null ) {
+  //       closePopup(popupOpened);
+  //     }
+  //   })
+  // })
+
   //перебор коллекции кнопок закрытия и добавления события (при переборе коллекции в каждой итерации на элемент коллекции вешается событие по клику - вызов функции закрывающей родителя кнопки(родитель -параметр функции))
   popupCloseButtons.forEach((btn) => {
     btn.addEventListener("click", (evt) => {
@@ -120,11 +149,11 @@ const initialCards = [
     evt.preventDefault();
     profileName.textContent = formInputName.value;
     profileAbout.textContent = formInputAbout.value;
-    evt.target.reset();
+    evt.target.reset();    
     closePopup(popupInfo);
   }
   
-  formProfile.addEventListener("submit", handleSubmitFormInfo);
+  formProfile.addEventListener("submit", handleSubmitFormInfo); //слушатель на форме профиля
 
   //функция редактировия карточки
   function handleSubmitFormCard(evt) {
@@ -135,3 +164,58 @@ const initialCards = [
   }
   
   formCard.addEventListener("submit", handleSubmitFormCard);
+
+  //валидация форм
+  
+  //функция показывает ошибку в поле ввода
+  function showError(inputField, errorMesage) {
+    const spanId = 'error-' + inputField.id;
+    const errorElement = document.getElementById(spanId);
+    errorElement.textContent = inputField.validationMessage;
+  }
+
+  //функция прячет ошибку в поле ввода
+  function hideError(inputField) {
+    const spanId = 'error-' + inputField.id;
+    const errorElement = document.getElementById(spanId);
+    errorElement.textContent = '';
+  }
+
+  //фунцкия валидации формы
+  function validateForm(inputField) {   
+    if (inputField.validity.valid) {
+      hideError(inputField);
+    } else {
+      showError(inputField, inputField.validationMessage);
+    }
+  }
+
+  //функция делает неактивной кнопку сабмит 
+  function disableButton(button) {
+    button.disabled = true;
+  }
+  //функция делает активной кнопку сабмит
+  function enableButton(button) {
+    button.disabled = false;
+  }
+
+  //перебор полей ввода
+inputFields.forEach(item => {
+  item.addEventListener('input', ()=> validateForm(item));
+  });
+
+  //функция активирует кнопку сабмит
+function submitEnable(button) {
+  submitButton.classList.remove('.popup__submit_desable');
+}
+  //функция деактивирует кнопку сабмит
+function submitDesable(button) {
+  submitButton.classList.add('.popup__submit_desable');
+}
+
+submitDesable(submitButton);
+
+
+  
+
+
