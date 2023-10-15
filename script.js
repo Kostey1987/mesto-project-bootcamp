@@ -144,9 +144,22 @@ const initialCards = [
     openPopup(popupCard);
   });
 
+    //функция активирует кнопку сабмит
+  function enableSubmit(button) {
+    button.classList.remove('popup__submit_desable');
+    button.disabled = false;
+  }
+  //функция деактивирует кнопку сабмит
+  function desableSubmit(button) {
+    button.classList.add('popup__submit_desable');
+    button.disabled = true;
+  }
+
+
   //функция редактирования профиля
   function handleSubmitFormInfo(evt) {
     evt.preventDefault();
+    // evt.target.querySelector('.popup__submit');    
     profileName.textContent = formInputName.value;
     profileAbout.textContent = formInputAbout.value;
     evt.target.reset();    
@@ -182,38 +195,42 @@ const initialCards = [
   }
 
   //фунцкия валидации формы
-  function validateForm(inputField) {   
+  function validateForm(inputField) {
+    
+    // let result = false;
+
     if (inputField.validity.valid) {
       hideError(inputField);
     } else {
       showError(inputField, inputField.validationMessage);
     }
+
+    // result = inputField.validity.valid;
+
+    // return result;
   }
 
-  //функция делает неактивной кнопку сабмит 
-  function disableButton(button) {
-    button.disabled = true;
-  }
-  //функция делает активной кнопку сабмит
-  function enableButton(button) {
-    button.disabled = false;
-  }
 
   //перебор полей ввода
-inputFields.forEach(item => {
-  item.addEventListener('input', ()=> validateForm(item));
+  inputFields.forEach(item => {
+    const form = item.closest('.popup__form');
+    const button = form.querySelector('.popup__submit');
+
+  item.addEventListener('input', ()=> {
+    checkForm(form, button);
+    validateForm(item);
+     })
   });
 
-  //функция активирует кнопку сабмит
-function submitEnable(button) {
-  submitButton.classList.remove('.popup__submit_desable');
-}
-  //функция деактивирует кнопку сабмит
-function submitDesable(button) {
-  submitButton.classList.add('.popup__submit_desable');
-}
 
-submitDesable(submitButton);
+  function checkForm(form, button) {
+    if (form.checkValidity()){
+      enableSubmit(button);
+    } else {
+     desableSubmit(button);
+    }
+  }
+
 
 
   
