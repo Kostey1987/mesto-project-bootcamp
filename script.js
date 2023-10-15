@@ -42,10 +42,8 @@ const initialCards = [
   const profileAbout = document.querySelector(".profile__about");
   const formInputPlace = document.querySelector(".popup__input_place");
   const formInputImage = document.querySelector('.popup__input_image');
-  const submitButton = document.querySelector('.popup__submit');
-  const inputFields = document.querySelectorAll('.popup__input');//валидация
 
-  //функция закрытия по клавише
+  //функция закрытия попапа по клавише
   document.addEventListener('keydown', evt => {
     const popupOpened = document.querySelector('.popup_opened');
     if (popupOpened !== null && evt.key == 'Escape') {
@@ -53,27 +51,17 @@ const initialCards = [
     }
   });
 
+  //функция закрытия попапа по оверлею
+  popups.forEach(popup => {
+     popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup')) closePopup(evt.target);
+    });
+  });
 
-
-  // убер закрывалка
-  // document.querySelectorAll('.popup__container').forEach(e => {
-  //   e.addEventListener('click', e => {
-  //     e.stopPropagation();
-  //   })
-  // })
-  // popups.forEach(e => {
-  //   console.log(e)
-  //   e.addEventListener('click', ee => {      
-  //     const popupOpened = document.querySelector('.popup_opened');
-  //     if (popupOpened !== null ) {
-  //       closePopup(popupOpened);
-  //     }
-  //   })
-  // })
 
   //перебор коллекции кнопок закрытия и добавления события (при переборе коллекции в каждой итерации на элемент коллекции вешается событие по клику - вызов функции закрывающей родителя кнопки(родитель -параметр функции))
   popupCloseButtons.forEach((btn) => {
-    btn.addEventListener("click", (evt) => {
+    btn.addEventListener("click", (evt) => {      
       closePopup(evt.target.closest(".popup"));
     });
   });
@@ -159,7 +147,11 @@ const initialCards = [
   //функция редактировия карточки
   function handleSubmitFormCard(evt) {
     evt.preventDefault();
-    addCard(createItem(formInputPlace.value, formInputImage.value));
+    const obj = {
+      name: formInputPlace.value, 
+      link: formInputImage.value
+    }
+    addCard(createItem(obj));
     evt.target.reset();
     closePopup(popupCard);
   }
@@ -170,37 +162,36 @@ const initialCards = [
 
   //функция активирует кнопку сабмит
   function enableSubmit(button) {
-    button.classList.remove('popup__submit_desable');
     button.disabled = false;
   }
 //функция деактивирует кнопку сабмит
     function desableSubmit(button) {
-    button.classList.add('popup__submit_desable');
     button.disabled = true;
   }
   
   //функция показывает ошибку в поле ввода
-  function showError(inputField, errorMesage) {
+  function showError(inputField, errorMesage, errorInputClass) {
     const spanId = 'error-' + inputField.id;
     const errorElement = document.getElementById(spanId);
-    errorElement.textContent = inputField.validationMessage;
+    inputField.classList.add(errorInputClass);
+    errorElement.textContent = errorMesage;
+    
   }
 
   //функция прячет ошибку в поле ввода
-  function hideError(inputField) {
+  function hideError(inputField, errorInputClass) {
     const spanId = 'error-' + inputField.id;
     const errorElement = document.getElementById(spanId);
+    inputField.classList.remove(errorInputClass);
     errorElement.textContent = '';
   }
 
   //фунцкия валидации формы
-  function validateForm(inputField) {
+  function validateForm(inputField, settings) {
     if (inputField.validity.valid) {
-      hideError(inputField);
-      inputField.classList.remove('popup__input_error');
+      hideError(inputField, settings.errorInputClass);
     } else {
-      showError(inputField, inputField.validationMessage);
-      inputField.classList.add('popup__input_error');
+      showError(inputField, inputField.validationMessage, settings.errorInputClass);
     }
   }
 
@@ -212,25 +203,31 @@ const initialCards = [
     }
   }
 
-  // const validationSettings = {
-  //   inputSelector: '.popup__input',
-  //   submitButtonSelector: '.popup__submit'
-  // }
+  const validationSettings = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  formSelector: '.popup__form',
+  errorInputClass: 'popup__input_error',
+  }
 
-  function enableValidation(form) {
-  checkForm(form, submitButton);
-  inputFields.forEach(item => {
-    const form = item.closest('.popup__form');
-    const button = form.querySelector('.popup__submit');
-  item.addEventListener('input', ()=> {
-    checkForm(form, button);
-    validateForm(item);
-     })
+  function enableValidation(settings) {
+  const forms = document.querySelectorAll(settings.formSelector);
+  forms.forEach(form => {
+    const submitButton = form.querySelector(settings.submitButtonSelector);
+    const inputFields = form.querySelectorAll(settings.inputSelector);
+    checkForm(form, submitButton);
+    inputFields.forEach(item => {
+    item.addEventListener('input', ()=> {
+      checkForm(form, submitButton);
+      validateForm(item, settings);
+       });
+    });
   });
-  }  
+  
+  }
 
-  enableValidation(formProfile);
-  enableValidation(formCard);
+  enableValidation(validationSettings);
+ 
 
 
 

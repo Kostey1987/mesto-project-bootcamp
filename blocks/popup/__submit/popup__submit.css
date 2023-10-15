@@ -16,6 +16,9 @@
   border: 0;
   border-radius: 2px;
 }
+.popup__submit:disabled {
+  background: rgba(0, 0, 0, 0.80);
+}
 
 .popup__submit:hover {
   opacity: 0.8;
