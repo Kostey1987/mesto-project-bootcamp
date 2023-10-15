@@ -144,18 +144,6 @@ const initialCards = [
     openPopup(popupCard);
   });
 
-    //функция активирует кнопку сабмит
-  function enableSubmit(button) {
-    button.classList.remove('popup__submit_desable');
-    button.disabled = false;
-  }
-  //функция деактивирует кнопку сабмит
-  function desableSubmit(button) {
-    button.classList.add('popup__submit_desable');
-    button.disabled = true;
-  }
-
-
   //функция редактирования профиля
   function handleSubmitFormInfo(evt) {
     evt.preventDefault();
@@ -179,6 +167,17 @@ const initialCards = [
   formCard.addEventListener("submit", handleSubmitFormCard);
 
   //валидация форм
+
+  //функция активирует кнопку сабмит
+  function enableSubmit(button) {
+    button.classList.remove('popup__submit_desable');
+    button.disabled = false;
+  }
+//функция деактивирует кнопку сабмит
+    function desableSubmit(button) {
+    button.classList.add('popup__submit_desable');
+    button.disabled = true;
+  }
   
   //функция показывает ошибку в поле ввода
   function showError(inputField, errorMesage) {
@@ -196,32 +195,14 @@ const initialCards = [
 
   //фунцкия валидации формы
   function validateForm(inputField) {
-    
-    // let result = false;
-
     if (inputField.validity.valid) {
       hideError(inputField);
+      inputField.classList.remove('popup__input_error');
     } else {
       showError(inputField, inputField.validationMessage);
+      inputField.classList.add('popup__input_error');
     }
-
-    // result = inputField.validity.valid;
-
-    // return result;
   }
-
-
-  //перебор полей ввода
-  inputFields.forEach(item => {
-    const form = item.closest('.popup__form');
-    const button = form.querySelector('.popup__submit');
-
-  item.addEventListener('input', ()=> {
-    checkForm(form, button);
-    validateForm(item);
-     })
-  });
-
 
   function checkForm(form, button) {
     if (form.checkValidity()){
@@ -230,6 +211,26 @@ const initialCards = [
      desableSubmit(button);
     }
   }
+
+  // const validationSettings = {
+  //   inputSelector: '.popup__input',
+  //   submitButtonSelector: '.popup__submit'
+  // }
+
+  function enableValidation(form) {
+  checkForm(form, submitButton);
+  inputFields.forEach(item => {
+    const form = item.closest('.popup__form');
+    const button = form.querySelector('.popup__submit');
+  item.addEventListener('input', ()=> {
+    checkForm(form, button);
+    validateForm(item);
+     })
+  });
+  }  
+
+  enableValidation(formProfile);
+  enableValidation(formCard);
 
 
 
