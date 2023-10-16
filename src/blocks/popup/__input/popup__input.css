@@ -1,6 +1,6 @@
 .popup__input {
   display: flex;
-  align-items: start;
+  align-items:flex-start;
   box-sizing: border-box;
   border: 0;
   width: 100%;

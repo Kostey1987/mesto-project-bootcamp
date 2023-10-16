@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
   </head>
 
@@ -14,7 +13,7 @@
 
     <main class="content">
       <section class="profile" aria-label="Профиль">
-        <img src="./images/avatar.jpg" alt="аватар" class="profile__avatar">
+        <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar"> 
         <div class="profile__info">
           <div class="profile__row">
             <h2 class="profile__name">Жак-Ив Кусто</h2>
@@ -25,8 +24,7 @@
         <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section class="cards" aria-label="Галерея">
-      </section>
+      <section class="cards" aria-label="Галерея"></section>
     </main>
 
     <footer class="footer">
@@ -37,11 +35,35 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form id="form" class="popup__form popup__form_profile" name="infoForm" method="post" novalidate>
+        <form
+          id="form"
+          class="popup__form popup__form_profile"
+          name="infoForm"
+          method="post"
+          novalidate
+        >
           <fieldset class="popup__input-container">
-            <input id="nameOf" class="popup__input popup__input_name" type="text" name="nameOf" placeholder="Имя" required minlength="4" maxlength="40">
+            <input
+              id="nameOf"
+              class="popup__input popup__input_name"
+              type="text"
+              name="nameOf"
+              placeholder="Имя"
+              required
+              minlength="4"
+              maxlength="40"
+            />
             <span id="error-nameOf" class="popup__error"></span>
-            <input id="job" class="popup__input popup__input_job-title" type="text" name="job" placeholder="Занятие" required minlength="2" maxlength="200">
+            <input
+              id="job"
+              class="popup__input popup__input_job-title"
+              type="text"
+              name="job"
+              placeholder="Занятие"
+              required
+              minlength="2"
+              maxlength="200"
+            />
             <span id="error-job" class="popup__error"></span>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
@@ -53,13 +75,33 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="popup__form popup__form_card" name="cardForm" method="post" novalidate>
+        <form
+          class="popup__form popup__form_card"
+          name="cardForm"
+          method="post"
+          novalidate
+        >
           <fieldset class="popup__input-container">
-            <input id="cardPlace" class="popup__input popup__input_place" type="text" name="cardPlace" placeholder="Название" required minlength="2" maxlength="30">
+            <input
+              id="cardPlace"
+              class="popup__input popup__input_place"
+              type="text"
+              name="cardPlace"
+              placeholder="Название"
+              required
+              minlength="2"
+              maxlength="30"
+            />
             <span id="error-cardPlace" class="popup__error"></span>
-            <input id="cardImage" class="popup__input popup__input_image" type="url" name="cardImage"
-            placeholder="Ссылка на картинку" required>
-            <span  id="error-cardImage" class="popup__error"></span>
+            <input
+              id="cardImage"
+              class="popup__input popup__input_image"
+              type="url"
+              name="cardImage"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span id="error-cardImage" class="popup__error"></span>
           </fieldset>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -69,7 +111,7 @@
     <div class="popup popup-image popup_opacity">
       <div class="popup__container popup__container_place_image">
         <button class="popup__close-button" type="button"></button>
-        <img src="#" alt="Thumbnail" class="popup__image">
+        <img src="#" alt="Thumbnail" class="popup__image" />
         <p class="popup__paragraph"></p>
       </div>
     </div>
@@ -77,14 +119,14 @@
     <template id="create-item">
       <div class="card">
         <button class="card__trash" type="button"></button>
-        <img src="" alt="" class="card__image">
+        <img src="" alt="" class="card__image" />
         <div class="card__container">
           <h2 class="card__paragraph"></h2>
           <button class="card__like" type="button"></button>
         </div>
       </div>
-    </template>    
+    </template>
 
-    <script src="script.js"></script>
+    <!-- <script type="module" src="./index.js"></script> -->
   </body>
 </html>
