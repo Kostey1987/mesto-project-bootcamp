@@ -49,6 +49,7 @@ import likeActive from "./images/group/active.svg";
 import like from "./images/group/disable.svg";
 import trash from "./images/Trash.svg";
 import miniAdd from "./images/addbutton/Vector.svg";
+import avatarBtn from "./images/avatarbutton/avatarButton.svg"
 
 
 
@@ -83,8 +84,35 @@ const formInputPlace = document.querySelector(".popup__input_place");
 const formInputImage = document.querySelector(".popup__input_image");
 const submitButtonCard = document.getElementById("submitCard");
 const submitButtonProfile = document.getElementById("submitProfile");
+const formAvatar = document.querySelector(".popup-avatar");
+const profileAvatar = document.querySelector(".profile__avatar");
+const avatarButton = document.querySelector(".profile__avatar-button");
+const formInputAvatar = document.querySelector(".popup__input_avatar");
+const submitAvatar = document.getElementById("submitAvatar");
 
-console.log(popupCard);
+
+avatarButton.addEventListener('click', () => {
+  openPopup(formAvatar);
+});
+
+//функция редактирования аватара
+function handleSubmitFormAvatar(evt) {
+  evt.preventDefault();
+  profileAvatar.src = formInputAvatar.value;
+  evt.target.reset();
+  closePopup(formAvatar);
+  desableSubmit(submitAvatar);
+}
+
+formAvatar.addEventListener('submit', handleSubmitFormAvatar);
+
+// function changeAvatar(avatarPath) {
+//   image.src = avatarPath;
+// }
+
+// profileAvatar.addEventListener('click', () => {
+//   openPopup(formAvatar);
+// })
 
 
 initialCards.forEach((item) => {  

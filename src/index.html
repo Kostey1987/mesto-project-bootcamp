@@ -13,7 +13,10 @@
 
     <main class="content">
       <section class="profile" aria-label="Профиль">
-        <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar"> 
+        <div class="profile__avatarContainer">
+          <button class="profile__avatar-button" type="button"></button>
+          <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar">
+        </div>
         <div class="profile__info">
           <div class="profile__row">
             <h2 class="profile__name">Жак-Ив Кусто</h2>
@@ -116,6 +119,33 @@
       </div>
     </div>
 
+    <div class="popup popup-avatar">
+      <div class="popup__container popup__container_place_avatar">
+        <button class="popup__close-button" type="button"></button>
+        <h2 class="popup__heading">Обновить аватар</h2>
+        <form
+          id="form"
+          class="popup__form popup__form_avatar"
+          name="avatarForm"
+          method="post"
+          novalidate
+        >
+          <fieldset class="popup__input-container">
+            <input
+              id="avatarImage"
+              class="popup__input popup__input_avatar"
+              name="avatarImage"
+              placeholder="ссылка на аватар"
+              type="url"
+              required
+            />
+            <span id="error-avatarImage" class="popup__error"></span>
+          </fieldset>
+          <button class="popup__submit" id="submitAvatar" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
     <template id="create-item">
       <div class="card">
         <button class="card__trash" type="button"></button>
@@ -124,6 +154,7 @@
           <h2 class="card__paragraph"></h2>
           <button class="card__like" type="button"></button>
         </div>
+        <span class="card__likeСount">0</span>
       </div>
     </template>
 
