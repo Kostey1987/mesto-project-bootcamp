@@ -1,11 +1,11 @@
 //валидация форм
 
 //функция активирует кнопку сабмит
-function enableSubmit(button) {
+export function enableSubmit(button) {
   button.disabled = false;
 }
 //функция деактивирует кнопку сабмит
-function desableSubmit(button) {
+export function desableSubmit(button) {
   button.disabled = true;
 }
 
@@ -38,7 +38,7 @@ function validateForm(inputField, settings) {
   }
 }
 
-function checkForm(form, button) {
+export function checkForm(form, button) {
   if (form.checkValidity()) {
     enableSubmit(button);
   } else {

@@ -3,6 +3,7 @@ import { openPopup } from "./modal.js";
 import { closePopup } from "./modal.js";
 import { createItem } from "./card.js";
 import { addCard } from "./card.js";
+import { desableSubmit } from "./validate.js";
 import './pages/index.css';
 
 
@@ -61,6 +62,12 @@ const initialCard = [
   { name: "Кусто", link: kusto },
 ];
 
+const validationSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  formSelector: ".popup__form",
+  errorInputClass: "popup__input_error",
+};
 
 const cardInfo = document.querySelector(".profile__add-button");
 const popupCard = document.querySelector(".popup-card");
@@ -74,8 +81,13 @@ const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 const formInputPlace = document.querySelector(".popup__input_place");
 const formInputImage = document.querySelector(".popup__input_image");
+const submitButtonCard = document.getElementById("submitCard");
+const submitButtonProfile = document.getElementById("submitProfile");
 
-initialCards.forEach((item) => {
+console.log(popupCard);
+
+
+initialCards.forEach((item) => {  
   addCard(createItem(item));
 });
 
@@ -83,10 +95,12 @@ profile.addEventListener("click", () => {
   formInputName.value = profileName.textContent;
   formInputAbout.value = profileAbout.textContent;
   openPopup(popupInfo);
+  desableSubmit(submitButtonProfile);
 });
 
 cardInfo.addEventListener("click", () => {
   openPopup(popupCard);
+  desableSubmit(submitButtonCard);
 });
 
 //функция редактирования профиля
@@ -108,17 +122,10 @@ function handleSubmitFormCard(evt) {
     link: formInputImage.value,
   };
   addCard(createItem(obj));
-  evt.target.reset();
-  closePopup(popupCard);
+  evt.target.reset();  
+  closePopup(popupCard);  
 }
 
 formCard.addEventListener("submit", handleSubmitFormCard);
-
-const validationSettings = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  formSelector: ".popup__form",
-  errorInputClass: "popup__input_error",
-};
 
 enableValidation(validationSettings);
