@@ -15,7 +15,7 @@
       <section class="profile" aria-label="Профиль">
         <div class="profile__avatarContainer">
           <button class="profile__avatar-button" type="button"></button>
-          <img src="<%=require('./images/avatar.jpg')%>" alt="аватар" class="profile__avatar">
+          <img src="" alt="аватар" class="profile__avatar" />
         </div>
         <div class="profile__info">
           <div class="profile__row">
@@ -42,7 +42,6 @@
           id="form"
           class="popup__form popup__form_profile"
           name="infoForm"
-          method="post"
           novalidate
         >
           <fieldset class="popup__input-container">
@@ -69,7 +68,9 @@
             />
             <span id="error-job" class="popup__error"></span>
           </fieldset>
-          <button class="popup__submit" id="submitProfile" type="submit">Сохранить</button>
+          <button class="popup__submit" id="submitProfile" type="submit">
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
@@ -78,12 +79,7 @@
       <div class="popup__container popup__container_place_form">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form
-          class="popup__form popup__form_card"
-          name="cardForm"
-          method="post"
-          novalidate
-        >
+        <form class="popup__form popup__form_card" name="cardForm" novalidate>
           <fieldset class="popup__input-container">
             <input
               id="cardPlace"
@@ -106,7 +102,9 @@
             />
             <span id="error-cardImage" class="popup__error"></span>
           </fieldset>
-          <button class="popup__submit" id="submitCard" type="submit">Сохранить</button>
+          <button class="popup__submit" id="submitCard" type="submit">
+            Создать
+          </button>
         </form>
       </div>
     </div>
@@ -127,7 +125,6 @@
           id="form"
           class="popup__form popup__form_avatar"
           name="avatarForm"
-          method="post"
           novalidate
         >
           <fieldset class="popup__input-container">
@@ -141,7 +138,9 @@
             />
             <span id="error-avatarImage" class="popup__error"></span>
           </fieldset>
-          <button class="popup__submit" id="submitAvatar" type="submit">Сохранить</button>
+          <button class="popup__submit" id="submitAvatar" type="submit">
+            Сохранить
+          </button>
         </form>
       </div>
     </div>
@@ -157,7 +156,5 @@
         <span class="card__likeСount">0</span>
       </div>
     </template>
-
-    <!-- <script type="module" src="./index.js"></script> -->
   </body>
 </html>

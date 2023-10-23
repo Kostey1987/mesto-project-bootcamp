@@ -4,8 +4,8 @@
   max-width: 358px;
   height: 50px;
   text-align: center;
-  color: #FFF;
-  font-family:inherit;
+  color: #fff;
+  font-family: inherit;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -16,13 +16,21 @@
   border: 0;
   border-radius: 2px;
 }
-.popup__submit:disabled {
-  background: rgba(0, 0, 0, 0.80);
-}
 
 .popup__submit:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.popup__submit:disabled {
+  background: transparent;
+  border-radius: 2px;
+  border: 1px solid rgb(195, 195, 195);
+  color: rgb(195, 195, 195);
+}
+
+.popup__submit:not(:disabled):hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 768px) {
@@ -33,4 +41,4 @@
     margin-bottom: 25px;
     font-size: 14px;
   }
-} 
+}

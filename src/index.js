@@ -4,37 +4,15 @@ import { closePopup } from "./modal.js";
 import { createItem } from "./card.js";
 import { addCard } from "./card.js";
 import { desableSubmit } from "./validate.js";
-import './pages/index.css';
+import { getCards } from "./api.js";
+import { saveCard } from "./api.js";
+import { saveInfo } from "./api.js";
+import { getInfo } from "./api.js";
+import { changeAvatar } from "./api.js";
+import { getAvatar } from "./api.js";
+import { setCurrentUserId } from "./utils.js";
+import "./pages/index.css";
 
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
-
-import kusto from "./images/avatar.jpg";
 import arkhyz from "./images/arkhyz.jpg";
 import chelyabinsk from "./images/chelyabinsk-oblast.jpg";
 import ivanovo from "./images/ivanovo.jpg";
@@ -49,9 +27,7 @@ import likeActive from "./images/group/active.svg";
 import like from "./images/group/disable.svg";
 import trash from "./images/Trash.svg";
 import miniAdd from "./images/addbutton/Vector.svg";
-import avatarBtn from "./images/avatarbutton/avatarButton.svg"
-
-
+import avatarBtn from "./images/avatarbutton/avatarButton.svg";
 
 const initialCard = [
   { name: "Архыз", link: arkhyz },
@@ -60,7 +36,6 @@ const initialCard = [
   { name: "Камчатка", link: kamchatka },
   { name: "Холмогорский район", link: kholmog },
   { name: "Байкал", link: baikal },
-  { name: "Кусто", link: kusto },
 ];
 
 const validationSettings = {
@@ -84,40 +59,51 @@ const formInputPlace = document.querySelector(".popup__input_place");
 const formInputImage = document.querySelector(".popup__input_image");
 const submitButtonCard = document.getElementById("submitCard");
 const submitButtonProfile = document.getElementById("submitProfile");
+const submitAvatar = document.getElementById("submitAvatar");
 const formAvatar = document.querySelector(".popup-avatar");
 const profileAvatar = document.querySelector(".profile__avatar");
 const avatarButton = document.querySelector(".profile__avatar-button");
 const formInputAvatar = document.querySelector(".popup__input_avatar");
-const submitAvatar = document.getElementById("submitAvatar");
 
+Promise.all([getInfo(), getCards()])
+  .then(([info, cards]) => {
+    setCurrentUserId(info._id);
+    console.log(info._id);
+    changeInfo(info);
+    avatar(info);
+    cards.reverse().forEach((item) => {
+      addCard(createItem(item));
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-avatarButton.addEventListener('click', () => {
+avatarButton.addEventListener("click", () => {
   openPopup(formAvatar);
 });
 
-//функция редактирования аватара
+const avatar = (avatarLink) => {
+  profileAvatar.src = avatarLink.avatar;
+};
+
 function handleSubmitFormAvatar(evt) {
   evt.preventDefault();
-  profileAvatar.src = formInputAvatar.value;
-  evt.target.reset();
-  closePopup(formAvatar);
-  desableSubmit(submitAvatar);
+  submitAvatar.textContent = "Сохранение...";
+  changeAvatar(formInputAvatar.value)
+    .then((res) => {
+      avatar(res);
+      evt.target.reset();
+      desableSubmit(submitAvatar);
+      closePopup(formAvatar);
+    })
+    .catch((err) => console.log(err.status, err.mesage))
+    .finally(() => {
+      submitAvatar.textContent = "Сохранить";
+    });
 }
 
-formAvatar.addEventListener('submit', handleSubmitFormAvatar);
-
-// function changeAvatar(avatarPath) {
-//   image.src = avatarPath;
-// }
-
-// profileAvatar.addEventListener('click', () => {
-//   openPopup(formAvatar);
-// })
-
-
-initialCards.forEach((item) => {  
-  addCard(createItem(item));
-});
+formAvatar.addEventListener("submit", handleSubmitFormAvatar);
 
 profile.addEventListener("click", () => {
   formInputName.value = profileName.textContent;
@@ -131,27 +117,40 @@ cardInfo.addEventListener("click", () => {
   desableSubmit(submitButtonCard);
 });
 
-//функция редактирования профиля
+const changeInfo = (profileInfo) => {
+  profileName.textContent = profileInfo.name;
+  profileAbout.textContent = profileInfo.about;
+};
+
 function handleSubmitFormInfo(evt) {
   evt.preventDefault();
-  profileName.textContent = formInputName.value;
-  profileAbout.textContent = formInputAbout.value;
-  evt.target.reset();
-  closePopup(popupInfo);
+  submitButtonProfile.textContent = "Сохранение...";
+  saveInfo(formInputName.value, formInputAbout.value)
+    .then((res) => {
+      changeInfo(res);
+      closePopup(popupInfo);
+    })
+    .catch((err) => console.log(err.status, err.mesage))
+    .finally(() => {
+      submitButtonProfile.textContent = "Сохранить";
+    });
 }
 
 formProfile.addEventListener("submit", handleSubmitFormInfo); //слушатель на форме профиля
 
-//функция редактировия карточки
 function handleSubmitFormCard(evt) {
   evt.preventDefault();
-  const obj = {
-    name: formInputPlace.value,
-    link: formInputImage.value,
-  };
-  addCard(createItem(obj));
-  evt.target.reset();  
-  closePopup(popupCard);  
+  submitButtonCard.textContent = "Сохранение...";
+  saveCard(formInputPlace.value, formInputImage.value)
+    .then((res) => {
+      addCard(createItem(res));
+      evt.target.reset();
+      closePopup(popupCard);
+    })
+    .catch((err) => console.log(err.status, err.mesage))
+    .finally(() => {
+      submitButtonCard.textContent = "Создать";
+    });
 }
 
 formCard.addEventListener("submit", handleSubmitFormCard);
