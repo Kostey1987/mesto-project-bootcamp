@@ -3,6 +3,7 @@
     height: 120px;
     background: transparent;
     position: relative;
+    border-radius: 50%;
   }
 
 .profile__avatarContainer:hover .profile__avatar-button {

@@ -13,12 +13,6 @@ import { getAvatar } from "./api.js";
 import { setCurrentUserId } from "./utils.js";
 import "./pages/index.css";
 
-import arkhyz from "./images/arkhyz.jpg";
-import chelyabinsk from "./images/chelyabinsk-oblast.jpg";
-import ivanovo from "./images/ivanovo.jpg";
-import kamchatka from "./images/kamchatka.jpg";
-import kholmog from "./images/kholmogorsky-rayon.jpg";
-import baikal from "./images/baikal.jpg";
 import editBtn from "./images/edit-button/EditButton.svg";
 import addBtnProfile from "./images/addbutton/AddButton.svg";
 import closePopupBtn from "./images/close-button/CloseIcon.svg";
@@ -28,15 +22,6 @@ import like from "./images/group/disable.svg";
 import trash from "./images/Trash.svg";
 import miniAdd from "./images/addbutton/Vector.svg";
 import avatarBtn from "./images/avatarbutton/avatarButton.svg";
-
-const initialCard = [
-  { name: "Архыз", link: arkhyz },
-  { name: "Челябинская область", link: chelyabinsk },
-  { name: "Иваново", link: ivanovo },
-  { name: "Камчатка", link: kamchatka },
-  { name: "Холмогорский район", link: kholmog },
-  { name: "Байкал", link: baikal },
-];
 
 const validationSettings = {
   inputSelector: ".popup__input",
@@ -64,6 +49,7 @@ const formAvatar = document.querySelector(".popup-avatar");
 const profileAvatar = document.querySelector(".profile__avatar");
 const avatarButton = document.querySelector(".profile__avatar-button");
 const formInputAvatar = document.querySelector(".popup__input_avatar");
+const avatarContainer = document.querySelector(".profile__avatarContainer");
 
 Promise.all([getInfo(), getCards()])
   .then(([info, cards]) => {
@@ -78,7 +64,7 @@ Promise.all([getInfo(), getCards()])
     console.log(err);
   });
 
-avatarButton.addEventListener("click", () => {
+avatarContainer.addEventListener("click", () => {
   openPopup(formAvatar);
 });
 
