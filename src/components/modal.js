@@ -2,6 +2,7 @@ const popups = document.querySelectorAll(".popup");
 const popupCloseButtons = document.querySelectorAll(".popup__close-button");
 const image = document.querySelector(".popup__image");
 const titleText = document.querySelector(".popup__paragraph");
+const popupImage = document.querySelector(".popup-image");
 
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
@@ -31,8 +32,9 @@ export function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-export function fillPopup(title, imagePath) {
+export function openImagePopup(title, imagePath) {
   image.src = imagePath;
   image.alt = title;
   titleText.textContent = title;
+  openPopup(popupImage);
 }

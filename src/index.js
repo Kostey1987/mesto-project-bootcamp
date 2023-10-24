@@ -1,27 +1,14 @@
-import { enableValidation } from "./validate.js";
-import { openPopup } from "./modal.js";
-import { closePopup } from "./modal.js";
-import { createItem } from "./card.js";
-import { addCard } from "./card.js";
-import { desableSubmit } from "./validate.js";
-import { getCards } from "./api.js";
-import { saveCard } from "./api.js";
-import { saveInfo } from "./api.js";
-import { getInfo } from "./api.js";
-import { changeAvatar } from "./api.js";
-import { getAvatar } from "./api.js";
-import { setCurrentUserId } from "./utils.js";
+import { enableValidation, desableSubmit } from "./components/validate.js";
+import { openPopup, closePopup } from "./components/modal.js";
+import { createItem, addCard } from "./components/card.js";
+import {
+  getCards,
+  saveCard,
+  saveInfo,
+  getInfo,
+  changeAvatar,
+} from "./components/api.js";
 import "./pages/index.css";
-
-import editBtn from "./images/edit-button/EditButton.svg";
-import addBtnProfile from "./images/addbutton/AddButton.svg";
-import closePopupBtn from "./images/close-button/CloseIcon.svg";
-import logo from "./images/logo.svg";
-import likeActive from "./images/group/active.svg";
-import like from "./images/group/disable.svg";
-import trash from "./images/Trash.svg";
-import miniAdd from "./images/addbutton/Vector.svg";
-import avatarBtn from "./images/avatarbutton/avatarButton.svg";
 
 const validationSettings = {
   inputSelector: ".popup__input",
@@ -49,22 +36,20 @@ const formAvatar = document.querySelector(".popup-avatar");
 const profileAvatar = document.querySelector(".profile__avatar");
 const avatarButton = document.querySelector(".profile__avatar-button");
 const formInputAvatar = document.querySelector(".popup__input_avatar");
-const avatarContainer = document.querySelector(".profile__avatarContainer");
 
 Promise.all([getInfo(), getCards()])
   .then(([info, cards]) => {
-    setCurrentUserId(info._id);
     changeInfo(info);
     avatar(info);
     cards.reverse().forEach((item) => {
-      addCard(createItem(item));
+      addCard(createItem(item, info._id));
     });
   })
   .catch((err) => {
     console.log(err);
   });
 
-avatarContainer.addEventListener("click", () => {
+avatarButton.addEventListener("click", () => {
   openPopup(formAvatar);
 });
 
@@ -121,14 +106,14 @@ function handleSubmitFormInfo(evt) {
     });
 }
 
-formProfile.addEventListener("submit", handleSubmitFormInfo); //слушатель на форме профиля
+formProfile.addEventListener("submit", handleSubmitFormInfo);
 
 function handleSubmitFormCard(evt) {
   evt.preventDefault();
   submitButtonCard.textContent = "Сохранение...";
   saveCard(formInputPlace.value, formInputImage.value)
     .then((res) => {
-      addCard(createItem(res));
+      addCard(createItem(res, res.owner._id));
       evt.target.reset();
       closePopup(popupCard);
     })

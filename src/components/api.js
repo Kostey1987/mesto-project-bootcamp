@@ -73,16 +73,9 @@ export function changeAvatar(avatarPath) {
   }).then(checkResponse);
 }
 
-export function setLike(cardId) {
+export function setLike(cardId, isLiked) {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-    method: "PUT",
-    headers: config.headers,
-  }).then(checkResponse);
-}
-
-export function unsetLike(cardId) {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-    method: "DELETE",
+    method: isLiked ? "DELETE" : "PUT",
     headers: config.headers,
   }).then(checkResponse);
 }
