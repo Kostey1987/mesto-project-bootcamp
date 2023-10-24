@@ -68,7 +68,6 @@ const formInputAvatar = document.querySelector(".popup__input_avatar");
 Promise.all([getInfo(), getCards()])
   .then(([info, cards]) => {
     setCurrentUserId(info._id);
-    console.log(info._id);
     changeInfo(info);
     avatar(info);
     cards.reverse().forEach((item) => {

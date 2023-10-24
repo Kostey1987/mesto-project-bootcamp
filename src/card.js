@@ -28,10 +28,9 @@ function setLikeCount(element, count) {
   element.textContent = count;
 }
 
-// функция добавления карточки с её функционалом
 export function createItem(cardParam) {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true); //копируем нужный элемент
-  const cardImage = cardElement.querySelector(".card__image"); //объявлем перменную содержащую изображение
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
   cardElement.id = cardParam._id;
   cardImage.src = cardParam.link;
   cardImage.alt = cardParam.name;
