@@ -58,7 +58,7 @@ export function createItem(cardParam, userId) {
   });
 
   cardImage.addEventListener("click", () => {
-    openImagePopup(cardParam.name, cardParam.link);
+    openImagePopup(cardParam.name, cardParam.link, cardParam.owner.name);
   });
 
   return cardElement;

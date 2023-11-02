@@ -41,4 +41,13 @@
 @import url(../blocks/popup/__submit/popup__submit.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__paragraph/popup__paragraph.css);
+@import url(../blocks/popup/__author/popup__author.css);
+@import url(../blocks/popup/__span/popup__span.css);
+@import url(../blocks/popup/__signature/popup__signature.css);
 @import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/users/users.css);
+@import url(../blocks/user/user.css);
+@import url(../blocks/user/__avatar/user__avatar.css);
+@import url(../blocks/user/__info/user__info.css);
+@import url(../blocks/user/__name/user__name.css);
+@import url(../blocks/user/__about/user__about.css);

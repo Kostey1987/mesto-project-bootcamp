@@ -28,6 +28,8 @@
       </section>
 
       <section class="cards" aria-label="Галерея"></section>
+
+      <section class="users" aria-label="Пользователи"></section>
     </main>
 
     <footer class="footer">
@@ -114,6 +116,10 @@
         <button class="popup__close-button" type="button"></button>
         <img src="#" alt="Thumbnail" class="popup__image" />
         <p class="popup__paragraph"></p>
+        <p class="popup__signature">
+          <span class="popup__span">Автор:</span>
+          <span class="popup__author"></span>
+        </p>
       </div>
     </div>
 
@@ -154,6 +160,16 @@
           <button class="card__like" type="button"></button>
         </div>
         <span class="card__likeСount">0</span>
+      </div>
+    </template>
+
+    <template id="create-users">
+      <div class="user">
+        <img src="" alt="" class="user__avatar" />
+        <div class="user__info">
+          <p class="user__name"></p>
+          <p class="user__about"></p>
+        </div>
       </div>
     </template>
   </body>

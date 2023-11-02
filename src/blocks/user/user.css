@@ -1,0 +1,20 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 880px;
+  margin: 40px auto 0 auto;
+}
+
+@media screen and (max-width: 950px) {
+  .user {
+    margin-left: 19px;
+    margin-right: 19px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user {
+    flex-direction: column;
+  }
+}
